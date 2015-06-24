@@ -16,6 +16,6 @@ func TestMinMax(t *testing.T) {
 
 func TestCoord(t *testing.T) {
 	c := Coord{10, 20}
-	c.Add(Coord{10, 10})
-	testbuddy.AssertEqual(t, c, Coord{11, 11})
+	c.Add(Coord{1, 1})
+	testbuddy.AssertEqual(t, c, Coord{11, 21})
 }
