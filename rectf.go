@@ -1,4 +1,4 @@
-package geom
+package rect
 
 func minf(x, y float64) float64 {
 	if x < y {
@@ -20,6 +20,14 @@ type Coordf struct {
 
 type Rectanglef struct {
 	Min, Max Coordf
+}
+
+func XYWHf(x, y, w, h float64) Rectanglef {
+	return Rectanglef{Coordf{x, y}, Coordf{x + w, y + h}}
+}
+
+func XYXYf(x1, y1, x2, y2 float64) Rectanglef {
+	return Normalisef(Rectanglef{Coordf{x1, y1}, Coordf{x2, y2}})
 }
 
 func Addf(lhs, rhs Coordf) Coordf {
