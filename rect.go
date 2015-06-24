@@ -43,7 +43,10 @@ func (c *Coord) Sub(rhs Coord) {
 }
 
 // Rectangle is an Axis aligned 2d Rectangle
-// It comprises 2 Coord values.
+// It comprises 2 Coord values, The Min Value and The Max Value.
+// A rectangle is considered to be "normal" if Min.X <= Max.X && Min.Y <= Max.Y
+// All the functions (apart from Normalise) expect supplied rectangles to be in
+// a normal format
 type Rectangle struct {
 	Min, Max Coord
 }
