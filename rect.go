@@ -1,6 +1,5 @@
-package rect
-
 // Package rect implements utilities for manipulating axis aligned 2d rectangles
+package rect
 
 func min(x, y int) int {
 	if x < y {
@@ -16,28 +15,35 @@ func max(x, y int) int {
 	return y
 }
 
+// Coord is the a basic cordinate in 2d space
 type Coord struct {
 	X, Y int
 }
 
+// Add standalone function implements lhs + rhs
 func Add(lhs, rhs Coord) Coord {
 	return Coord{lhs.X + rhs.X, lhs.Y + rhs.Y}
 }
 
+// Add method implements c = c + rhs. Modifies receiver value
 func (c *Coord) Add(rhs Coord) {
 	c.X += rhs.X
 	c.Y += rhs.Y
 }
 
+// Sub standalone function implements lhs - rhs
 func Sub(lhs, rhs Coord) Coord {
 	return Coord{lhs.X - rhs.X, lhs.Y - rhs.Y}
 }
 
+// Sub method implements c = c - rhs. Modifies receiver value
 func (c *Coord) Sub(rhs Coord) {
 	c.X -= rhs.X
 	c.Y -= rhs.Y
 }
 
+// Rectangle is an Axis aligned 2d Rectangle
+// It comprises 2 Coord values.
 type Rectangle struct {
 	Min, Max Coord
 }
