@@ -1,4 +1,3 @@
-// Package rect implements utilities for manipulating axis aligned 2d rectangles
 package rect
 
 func minf(x, y float64) float64 {
