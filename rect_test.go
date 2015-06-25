@@ -15,7 +15,7 @@ func TestMinMax(t *testing.T) {
 }
 
 func TestCoord(t *testing.T) {
-	c := Coord{10, 20}
-	c.Add(Coord{1, 1})
-	testbuddy.AssertEqual(t, c, Coord{11, 21})
+	c := Vec{10, 20}
+	c.Add(Vec{1, 1})
+	testbuddy.AssertEqual(t, c, Vec{11, 21})
 }
