@@ -57,7 +57,7 @@ func XYWH(x, y, w, h int) Rectangle {
 	return Rectangle{Vec{x, y}, Vec{x + w, y + h}}
 }
 
-// XYWH constructs a Rectangle from an 2 x,y positions - the supplied values
+// XYXY constructs a Rectangle from an 2 x,y positions - the supplied values
 // do not need to be in a normal form as this function normalises the resultant rectangle
 func XYXY(x1, y1, x2, y2 int) Rectangle {
 	return Normalise(Rectangle{Vec{x1, y1}, Vec{x2, y2}})
@@ -123,20 +123,20 @@ func (r *Rectangle) Expand(c Vec) {
 	r.Max.Add(c)
 }
 
-// Expands the rectangle in each direction by the size specified in c
+// Expand the rectangle in each direction by the size specified in c
 // Stand alone function version
 func Expand(r Rectangle, c Vec) Rectangle {
 	r.Expand(c)
 	return r
 }
 
-// Translates the rectangle position by the offset specified in c
+// Translate the rectangle position by the offset specified in c
 func (r *Rectangle) Translate(c Vec) {
 	r.Min.Add(c)
 	r.Max.Add(c)
 }
 
-// Translates the rectangle position by the offset specified in c
+// Translate the rectangle position by the offset specified in c
 // Stand alone function version
 func Translate(r Rectangle, c Vec) Rectangle {
 	r.Translate(c)

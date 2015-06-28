@@ -19,7 +19,7 @@ type Vecf struct {
 	X, Y float64
 }
 
-// Add standalone function implements lhs + rhs
+// Addf standalone function implements lhs + rhs
 func Addf(lhs, rhs Vecf) Vecf {
 	return Vecf{lhs.X + rhs.X, lhs.Y + rhs.Y}
 }
@@ -30,7 +30,7 @@ func (c *Vecf) Add(rhs Vecf) {
 	c.Y += rhs.Y
 }
 
-// Sub standalone function implements lhs - rhs
+// Subf standalone function implements lhs - rhs
 func Subf(lhs, rhs Vecf) Vecf {
 	return Vecf{lhs.X - rhs.X, lhs.Y - rhs.Y}
 }
@@ -56,24 +56,24 @@ func XYWHf(x, y, w, h float64) Rectanglef {
 	return Rectanglef{Vecf{x, y}, Vecf{x + w, y + h}}
 }
 
-// XYWHf constructs a Rectanglef from an 2 x,y positions - the supplied values
+// XYXYf constructs a Rectanglef from an 2 x,y positions - the supplied values
 // do not need to be in a normal form as this function normalises the resultant Rectanglef
 func XYXYf(x1, y1, x2, y2 float64) Rectanglef {
 	return Normalisef(Rectanglef{Vecf{x1, y1}, Vecf{x2, y2}})
 }
 
-// FromPosSize constructs a Rectanglef from a Position & a Size Vector
+// FromPosSizef constructs a Rectanglef from a Position & a Size Vector
 func FromPosSizef(pos, size Vecf) Rectanglef {
 	return Rectanglef{pos, Addf(pos, size)}
 }
 
-// FromSize constructs a Rectanglef from a Size Vector. In this case The Min value of
+// FromSizef constructs a Rectanglef from a Size Vector. In this case The Min value of
 // the Rectanglef will be {0,0}
 func FromSizef(size Vecf) Rectanglef {
 	return Rectanglef{Max: size}
 }
 
-// Normalise transforms the Rectanglef float64o its normal form.
+// Normalise transforms the Rectanglef into its normal form.
 func (r *Rectanglef) Normalise() {
 	if r.Min.X > r.Max.X {
 		r.Min.X, r.Max.X = r.Max.X, r.Min.X
@@ -84,7 +84,7 @@ func (r *Rectanglef) Normalise() {
 	}
 }
 
-// Normalise transforms the Rectanglef float64o its normal form.
+// Normalisef transforms the Rectanglef into its normal form.
 // Standalone version which does not modify its paramaters
 func Normalisef(r Rectanglef) Rectanglef {
 	r.Normalise()
@@ -116,39 +116,39 @@ func (r *Rectanglef) IsNormal() bool {
 	return (r.Min.X <= r.Max.X) && (r.Min.Y <= r.Max.Y)
 }
 
-// Expands the Rectanglef in each direction by the size specified in c
+// Expand the Rectanglef in each direction by the size specified in c
 func (r *Rectanglef) Expand(c Vecf) {
 	r.Min.Sub(c)
 	r.Max.Add(c)
 }
 
-// Expands the Rectanglef in each direction by the size specified in c
+// Expand the Rectanglef in each direction by the size specified in c
 // Stand alone function version
 func Expandf(r Rectanglef, c Vecf) Rectanglef {
 	r.Expand(c)
 	return r
 }
 
-// Translates the Rectanglef position by the offset specified in c
+// Translate the Rectanglef position by the offset specified in c
 func (r *Rectanglef) Translate(c Vecf) {
 	r.Min.Add(c)
 	r.Max.Add(c)
 }
 
-// Translates the Rectanglef position by the offset specified in c
+// Translatef translates the Rectanglef position by the offset specified in c
 // Stand alone function version
 func Translatef(r Rectanglef, c Vecf) Rectanglef {
 	r.Translate(c)
 	return r
 }
 
-// PointInRectangle tests to see if the point p is inside the Rectanglef r
+// PointInRectanglef tests to see if the point p is inside the Rectanglef r
 // returns true if it is
 func PointInRectanglef(r Rectanglef, p Vecf) bool {
 	return (r.Min.X <= p.X) && (r.Min.Y <= p.Y) && (p.X < r.Max.X) && (p.Y < r.Max.Y)
 }
 
-// Intersection returns a Rectanglef that is the Intersection between the
+// Intersectionf returns a Rectanglef that is the Intersection between the
 // two supplied rectangles.
 // if the rectangles Intersect, returns Intersection Rectanglef, true
 // if none Intersecting, returns non-normal Rectanglef, false
@@ -162,7 +162,7 @@ func Intersectionf(r1, r2 Rectanglef) (intersect Rectanglef, ok bool) {
 	return
 }
 
-// Union returns a Rectanglef that is the smallest Rectanglef, containing both
+// Unionf returns a Rectanglef that is the smallest Rectanglef, containing both
 // the supplied rectangles
 func Unionf(r1, r2 Rectanglef) Rectanglef {
 	return Rectanglef{
@@ -171,7 +171,7 @@ func Unionf(r1, r2 Rectanglef) Rectanglef {
 	}
 }
 
-// Contains returns true if rInner, is completly contained within rOuter
+// Containsf returns true if rInner, is completly contained within rOuter
 func Containsf(rOuter, rInner Rectanglef) bool {
 	return PointInRectanglef(rOuter, rInner.Min) && PointInRectanglef(rOuter, rInner.Max)
 }
