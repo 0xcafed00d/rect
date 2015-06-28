@@ -122,7 +122,7 @@ func (r *Rectanglef) Expand(c Vecf) {
 	r.Max.Add(c)
 }
 
-// Expand the Rectanglef in each direction by the size specified in c
+// Expandf expands the Rectanglef in each direction by the size specified in c
 // Stand alone function version
 func Expandf(r Rectanglef, c Vecf) Rectanglef {
 	r.Expand(c)

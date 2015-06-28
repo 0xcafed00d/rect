@@ -117,7 +117,7 @@ func (r *Rectangle) IsNormal() bool {
 	return (r.Min.X <= r.Max.X) && (r.Min.Y <= r.Max.Y)
 }
 
-// Expands the rectangle in each direction by the size specified in c
+// Expand the rectangle in each direction by the size specified in c
 func (r *Rectangle) Expand(c Vec) {
 	r.Min.Sub(c)
 	r.Max.Add(c)
