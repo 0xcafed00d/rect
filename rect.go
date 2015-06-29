@@ -63,6 +63,12 @@ func XYXY(x1, y1, x2, y2 int) Rectangle {
 	return Normalise(Rectangle{Vec{x1, y1}, Vec{x2, y2}})
 }
 
+// WH constructs a Rectangle from a width & height. In this case The Min value of
+// the rectangle will be {0,0}
+func WH(w, h int) Rectangle {
+	return Rectangle{Vec{0, 0}, Vec{w, h}}
+}
+
 // FromPosSize constructs a Rectangle from a Position & a Size Vector
 func FromPosSize(pos, size Vec) Rectangle {
 	return Rectangle{pos, Add(pos, size)}
